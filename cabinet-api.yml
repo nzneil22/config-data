@@ -20,20 +20,6 @@ spring:
             url: ${CABINET_USER_API:http://localhost:8096}
             logger-level: BASIC
 
-auth:
-  permissions-by-role:
-    ADMIN:
-      - CREATE_USER
-      - VIEW_ALL_PROJECTS
-      - CREATE_PROJECT
-      - EDIT_PROJECT
-      - DELETE_PROJECT
-    USER:
-      - CREATE_PROJECT
-      - EDIT_PROJECT
-    VIEWER: [ ]
-  token-expiry-duration: PT24H
-
 wood:
   wood-thickness: 19
   door-gap: 3
