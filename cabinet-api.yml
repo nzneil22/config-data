@@ -1,0 +1,153 @@
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.4.136:30006/cabinet?useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Malta
+    username: root
+    password: your-secure-pass
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000
+  cache:
+    type: redis
+    redis:
+      time-to-live: PT5M
+  cloud:
+    openfeign:
+      client:
+        config:
+          cabinet-users-client:
+            url: ${CABINET_USER_API:http://localhost:8096}
+            logger-level: BASIC
+
+auth:
+  permissions-by-role:
+    ADMIN:
+      - CREATE_USER
+      - VIEW_ALL_PROJECTS
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+      - DELETE_PROJECT
+    USER:
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+    VIEWER: [ ]
+  token-expiry-duration: PT24H
+
+wood:
+  wood-thickness: 19
+  door-gap: 3
+  price-per-quarter-sheet: 20.0
+  sqm-per-quarter-sheet: 1.47
+  price-per-cut: 1.75
+  tape-per-meter: 1.6
+  samet-drawer-bottom-width-reduction: 22
+  samet-drawer-backboard-width-reduction: 42
+  samet-drawer-bottom-depth-reduction: 12
+  samet-drawer-rear-depth-clearance-mm: 20
+  samet-drawer-height-clearance-mm: 30
+  samet-internal-drawer-depth-clearance-mm: 30
+  oven-unit-back-indent-mm: 50
+  fridge-unit-back-indent-mm: 50
+  skirting-mm: 50
+  built-in-fridge-bottom-door-default-height: 800
+  gola:
+    top-sheet-depth-reduction: 20
+  corner-cabinet:
+    pillar-depth-mm: 50
+    pillar-thickness-in-sheets: 2
+    door-gap-mm: 70
+    door-gap-overlap-mm: 18
+  pretty-side-forward-extension: 29
+  joining-cost-per-piece: 5
+
+frontend:
+  wood-thickness: 19
+  skirting-height: 100
+  skirting-inset: 80
+  door-gap: 3
+  door-front-offset: 2
+  countertop-front-overhang-mm: 30
+  gola-depth: 25
+  gola-u-height: 72
+  gola-l-height: 57
+  door-gola-over-hang: 15
+  wooden-skirting-height: 80
+  wooden-skirting-indent: 10
+  handle:
+    padding: 50
+    sizes:
+      short: 150
+      mid: 200
+      long: 300
+    thickness: 10
+  corner-cabinets:
+    corner-door-gap: 70
+    corner-door-support-depth: 50
+    corner-door-support-thickness: 38
+  fridge-unit:
+    back-inset: 50
+    height-adjustment: 100
+    wood-thickness: 19
+    padding: 40
+    default-fridge-width: 600
+    default-fridge-height: 1800
+    default-variant: FREE_STANDING
+  oven-unit:
+    back-inset: 50
+    defaults:
+      first-shelf-mm: 400
+      oven-height-mm: 580
+      microwave-height-mm: 360
+      no-of-shelves-top-part: 0
+  defaults:
+    bottom:
+      width: 600
+      height: 800
+      depth: 600
+    top:
+      width: 600
+      height: 800
+      depth: 300
+    sheet:
+      width: 600
+      height: 800
+      depth: 19
+    oven-unit:
+      width: 600
+      height: 2200
+      depth: 600
+    fridge-unit:
+      height: 2200
+      depth: 600
+  hinges:
+    door-sides: [ LEFT, RIGHT, TOP, BOTTOM ]
+    hinge-models: [ SAMET_SOFT_CLOSE, SAMET ]
+  guide-heights: [ 100, 900, 1500, 2300 ]
+
+shopping-list:
+  leg-unit-price-euro: 1.0
+  samet-drawer-unit-price-euro: 40.0
+  gola-l-unit-price-euro-per-metre: 40.0
+  gola-u-unit-price-euro-per-metre: 40.0
+  hinge-model-unit-price-euro:
+    samet_soft_close: 2.0
+    samet: 1.5
+
+mesh:
+  cabinets:
+    bottom_cabinet:
+      meshes:
+        - tag: CABINET_BODY
+          x: "0"
+          y: "0"
+          z: "0"
+
+users-feign-config:
+  username: cabinet-api
+  password: "test"
+
+pdf:
+  contact-name: Kevin Borg
+  contact-phone: +356 77141514
+  logo-path: classpath:Woodworks_Logo.png
