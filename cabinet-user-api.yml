@@ -1,0 +1,43 @@
+auth:
+  permissions-by-role:
+    SUPER_ADMIN:
+      - CREATE_USER
+      - VIEW_ALL_PROJECTS
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+      - DELETE_PROJECT
+    COMPANY_ADMIN:
+      - CREATE_USER
+      - VIEW_ALL_PROJECTS
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+      - DELETE_PROJECT
+    ADMIN:
+      - CREATE_USER
+      - VIEW_ALL_PROJECTS
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+      - DELETE_PROJECT
+    USER:
+      - CREATE_PROJECT
+      - EDIT_PROJECT
+    VIEWER: [ ]
+  token-expiry-duration: PT168H
+  jwt-secret: AO07z9Em7J++GrwiAYrvtNJazEbNhb3Fh62Yz4zFRi3zPAnpHXUm/W8mtlJU/UhiEZjLBes6TwQAlkAYYXk/Ww==
+  current-jwt-version: 1
+
+api-keys:
+  username-password-mapping:
+    neilb:
+      password: test
+      authorities:
+        - ADMIN
+    cabinet-api:
+      password: test
+      authorities:
+        - ADMIN
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.4.136:30006/cabinet_user?useLegacyDatetimeCode=false&serverTimezone=Europe/Malta
+    username: root
+    password: your-secure-pass
