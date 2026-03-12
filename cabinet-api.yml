@@ -6,7 +6,7 @@ spring:
   data:
     redis:
       host: ${REDIS_HOST:192.168.4.136}
-      port: ${REDIS_PORT:6379}
+      port: ${REDIS_PORT:30079}
       timeout: 2000
   cache:
     type: none
