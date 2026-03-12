@@ -9,7 +9,7 @@ spring:
       port: ${REDIS_PORT:32079}
       timeout: 2000
   cache:
-    type: none
+    type: redis
     redis:
       time-to-live: PT5M
   cloud:
